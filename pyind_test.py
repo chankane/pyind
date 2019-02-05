@@ -3,7 +3,7 @@ import numpy as np
 from pyind import Pyind
 
 
-IND = 100
+IND = 15
 POP = 300
 
 
@@ -13,10 +13,12 @@ def evl(ind):
 
 def main():
     pop = np.random.randint(2, size=(POP, IND))
+    conf = {
+        "eval_func": evl,
+        "goal_ind": np.ones(IND)
+    }
 
-    pi = Pyind(pop, evl)
-    pi.set_final_ind(np.ones(IND))
-    pi.start(1000)
+    Pyind(pop, conf).start(1000)
 
 
 if __name__ == "__main__":

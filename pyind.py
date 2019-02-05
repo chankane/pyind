@@ -1,6 +1,6 @@
 import numpy as np
 
-import default as df
+import defaults as df
 
 
 class Pyind:
@@ -13,7 +13,7 @@ class Pyind:
         conf.setdefault("sel_func", df.SEL_FUNC)
         conf.setdefault("xovr_func", df.XOVR_FUNC)
         conf.setdefault("mut_func", df.MUT_FUNC)
-        conf.setdefault("mut_func", None)
+        conf.setdefault("goal_ind", None)
 
         return conf
 
@@ -43,22 +43,20 @@ class Pyind:
             )
             for i in range(self._pop.shape[0] - _len)
         ])
-        # print("gem")
-        # print(children)
-        # print(np.xncatenate((elites, children)))
-        self._pop = np.xncatenate((elites, children))
+        self._pop = np.concatenate([elites, children])
 
-    def _in_goal_ind(self):
-        np.any()
-        return np.sum(self._goal_ind == ind) == ind.shape[0]
+    def _contains_goal_ind(self):
+        return np.any(np.all(
+            (self._pop == self._goal_ind).reshape(self._pop.shape[0], -1),
+            axis=1
+        ))
 
     def start(self, end_gen=df.END_GEN):
         for i in range(end_gen + 1):
             print("gen: " + str(i))
             # print(self._pop)
-            if self._is_goal_ind(sel[0]):
+            if self._contains_goal_ind():
                 break
-            sel = self._sel()
-            self._xovr(sel)
+            self._xovr(self._sel())
             print()
         print("best: " + str(self._sel()[0]))
