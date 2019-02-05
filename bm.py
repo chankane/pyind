@@ -1,6 +1,7 @@
 from benchmarker import Benchmarker
 
-from test import *
+import deap_test
+import pyind_test
 
 
 try:
@@ -9,9 +10,14 @@ except NameError:
     xrange = range       # for Python3
 
 
-loop = 10
+loop = 1
 with Benchmarker() as bench:
-    @bench("mt")
+    @bench("deap")
     def _(bm):
         for _ in xrange(loop):
-            main()
+            deap_test.main()
+
+    @bench("pyind")
+    def _(bm):
+        for _ in xrange(loop):
+            pyind_test.main()
