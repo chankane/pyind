@@ -26,7 +26,7 @@ class Pyind:
         self._sel_func = conf["sel_func"]
         self._xovr_func = conf["xovr_func"]
         self._mut_func = conf["mut_func"]
-        self._final_ind = conf["final_ind"]
+        self._goal_ind = conf["goal_ind"]
 
     def _sel(self):
         fitness = np.array([self._eval_func(e) for e in self._pop])
@@ -48,16 +48,17 @@ class Pyind:
         # print(np.xncatenate((elites, children)))
         self._pop = np.xncatenate((elites, children))
 
-    def _is_final_ind(self, ind):
-        return np.sum(self._final_ind == ind) == ind.shape[0]
+    def _in_goal_ind(self):
+        np.any()
+        return np.sum(self._goal_ind == ind) == ind.shape[0]
 
     def start(self, end_gen=df.END_GEN):
         for i in range(end_gen + 1):
             print("gen: " + str(i))
             # print(self._pop)
-            sel = self._sel()
-            if self._is_final_ind(sel[0]):
+            if self._is_goal_ind(sel[0]):
                 break
+            sel = self._sel()
             self._xovr(sel)
             print()
         print("best: " + str(self._sel()[0]))
