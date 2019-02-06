@@ -10,6 +10,7 @@ class Pyind:
             raise ValueError("Should define 'eval_func' in conf")
         conf.setdefault("sel_rate", df.SEL_RATE)
         conf.setdefault("xovr_pb", df.XOVR_PB)
+        conf.setdefault("mut_pb", df.MUT_PB)
         conf.setdefault("sel_func", df.SEL_FUNC)
         conf.setdefault("xovr_func", df.XOVR_FUNC)
         conf.setdefault("mut_func", df.MUT_FUNC)
@@ -22,6 +23,7 @@ class Pyind:
         self._pop = pop
         self._sel_rate = conf["sel_rate"]
         self._xovr_pb = conf["xovr_pb"]
+        self._mut_pb = conf["mut_pb"]
         self._eval_func = conf["eval_func"]
         self._sel_func = conf["sel_func"]
         self._xovr_func = conf["xovr_func"]
@@ -58,5 +60,6 @@ class Pyind:
             if self._contains_goal_ind():
                 break
             self._xovr(self._sel())
+            self._pop = self._mut_func(self._pop, self._mut_pb)
             print()
         print("best: " + str(self._sel()[0]))
