@@ -31,21 +31,21 @@ class Pyind:
         self._goal_ind = conf["goal_ind"]
 
     def _sel(self):
-        fitness = np.array([self._eval_func(e) for e in self._pop])
-        sel_num = int(self._pop.shape[0] * self._sel_rate)
-        idxs = np.argsort(fitness)[-sel_num:][::-1]
+        ftns = self._calc_ftns()
+        sel_num = int(ftns.shape[0] * self._sel_rate)
+        idxs = np.argsort(ftns)[-sel_num:][::-1]
         return self._pop[idxs]
 
-    def _xovr(self, elites):
-        _len = elites.shape[0]
-        children = np.array([
+    def _xovr(self, parents):
+        _len = parents.shape[0]
+        chil = np.array([
             self._xovr_func(
-                elites[np.random.randint(_len)],
-                elites[np.random.randint(_len)],
+                parents[np.random.randint(_len)],
+                parents[np.random.randint(_len)],
             )
             for i in range(self._pop.shape[0] - _len)
         ])
-        self._pop = np.concatenate([elites, children])
+        self._pop = np.concatenate([parents, chil])
 
     def _contains_goal_ind(self):
         return np.any(np.all(
@@ -59,7 +59,10 @@ class Pyind:
             # print(self._pop)
             if self._contains_goal_ind():
                 break
-            self._xovr(self._sel())
+            parents = self._sel_func(
+                self._pop, self._sel_rate, self._eval_func
+            )
+            self._xovr(parents)
             self._pop = self._mut_func(self._pop, self._mut_pb)
             print()
-        print("best: " + str(self._sel()[0]))
+        print("best: " + str(parents[0]))
