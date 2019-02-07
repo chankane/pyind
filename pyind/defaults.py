@@ -4,8 +4,8 @@ from . import selection as sel
 
 
 # probability
-XOVR_PB = 0.5
-MUT_PB = 0.05 * 0.2
+XOVR_PB = 0.875
+MUT_PB = 0.0075
 
 # func
 SEL_FUNC = sel.elite
