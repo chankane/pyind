@@ -1,6 +1,6 @@
-import crossover as xovr
-import mutation as mut
-import selection as sel
+from . import crossover as xovr
+from . import mutation as mut
+from . import selection as sel
 
 
 # probability

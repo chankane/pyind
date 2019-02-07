@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name="pyind",
-    version="1.2",
+    version="1.6",
     author="chankane",
     author_email="brawnychocolate@gmail.com",
     description="A genetic algorithm library",

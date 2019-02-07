@@ -1,6 +1,6 @@
 import numpy as np
 
-import defaults as df
+from . import defaults as df
 
 
 class Pyind:
@@ -30,12 +30,6 @@ class Pyind:
         self._mut_func = conf["mut_func"]
         self._goal_ind = conf["goal_ind"]
 
-    def _sel(self):
-        ftns = self._calc_ftns()
-        sel_num = int(ftns.shape[0] * self._sel_rate)
-        idxs = np.argsort(ftns)[-sel_num:][::-1]
-        return self._pop[idxs]
-
     def _xovr(self, parents):
         _len = parents.shape[0]
         chil = np.array([
@@ -57,11 +51,11 @@ class Pyind:
         for i in range(end_gen + 1):
             print("gen: " + str(i))
             # print(self._pop)
-            if self._contains_goal_ind():
-                break
             parents = self._sel_func(
                 self._pop, self._sel_rate, self._eval_func
             )
+            if self._contains_goal_ind():
+                break
             self._xovr(parents)
             self._pop = self._mut_func(self._pop, self._mut_pb)
             print()

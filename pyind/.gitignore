@@ -1,5 +1,2 @@
 __pycache__
-trush
-*test.py
-*.def
-*.old
+*.pyc
