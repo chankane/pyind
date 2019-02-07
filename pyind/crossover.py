@@ -12,6 +12,7 @@ def uniform(ind0, ind1):
     mask = np.random.randint(2, size=ind0.shape[0])
     return ind0 * mask + ind1 * np.logical_not(mask)
 
+
 if __name__ == "__main__":
     ind0 = np.zeros(30, dtype=int)
     ind1 = np.ones(30, dtype=int)
