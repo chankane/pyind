@@ -1,35 +1,26 @@
 import numpy as np
 
-
-def elite(pop, sel_rate, eval_func):
-    ftns = _calc_ftns(pop, eval_func)
-    sel_num = _calc_sel_num(pop, sel_rate)
-    print(ftns)
-    idxs = np.argsort(ftns)[-sel_num::][::-1]
-    return pop[idxs]
+#from . import util
+import util
 
 
-def roulette(pop, sel_rate, eval_func):
-    ftns = _calc_ftns(pop, eval_func)
-    sel_num = _calc_sel_num(pop, sel_rate)
-    r = np.random.rand(sel_num) * ftns.sum()
-    return pop[(ftns.cumsum()[:, np.newaxis] < r).sum(axis=0)]
+def elite(ftns, num):
+    return np.argsort(ftns)[-num::]
 
 
-# 2 times slower than "roulette"
-def _roulette_simple(pop, sel_rate, eval_func):
-    ftns = _calc_ftns(pop, eval_func)
-    sel_num = _calc_sel_num(pop, sel_rate)
+def roulette(ftns, num):
     w = ftns / ftns.sum()
-    return pop[np.random.choice(pop.shape[0], sel_num, p=w)]
+    return np.random.choice(ftns.shape[0], num, p=w)
 
 
-def _calc_sel_num(pop, sel_rate):
-    return int(pop.shape[0] * sel_rate)
+class Selection:
+    def __init__(self, pop_len, conf):
+        # conf["num"] = int(pop_len * conf["rate"])
+        self._func = conf["func"]
+        self._args = util.cre_args(self._func, conf, exclusion=("ftns",))
 
-
-def _calc_ftns(pop, eval_func):
-    return np.array([eval_func(e) for e in pop])
+    def sel(self, pop, ftns):
+        return pop[self._func(ftns, *self._args)]
 
 
 def evl(ind):
@@ -37,24 +28,27 @@ def evl(ind):
 
 
 if __name__ == "__main__":
+    conf = {
+        "func": elite,
+        "num": 3
+        # "rate": 0.1
+    }
     pop = np.array([
         [0, 1, 1, 1],
         [0, 0, 0, 1],
         [0, 0, 1, 1],
         [1, 1, 1, 1],
+        [0, 0, 1, 1],
     ])
 
-    # print(roulette(pop, 0.3, evl))
-    ar = np.array([0, 0, 0, 0, 0])
-    for i in range(10000):
-        t = roulette(pop, 0.3, evl).sum()
-        # print(t)
-        ar[t] += 1
-    print(ar/1000)
-
+    s = Selection(pop.shape[0], conf)
+    t = s.sel(pop, pop.sum(axis=1))
+    print(t)
+    """
     ar = np.array([0, 0, 0, 0, 0])
     for i in range(10000):
         t = _roulette_simple(pop, 0.3, evl).sum()
         # print(t)
         ar[t] += 1
     print(ar/1000)
+    """

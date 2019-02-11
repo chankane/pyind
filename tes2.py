@@ -3,13 +3,16 @@ import numpy as np
 from pyind import selection as sel
 
 
-loop = 100000
+loop = 100
+"""
 pop = np.array([
     [0, 1, 1, 1],
     [0, 0, 0, 1],
     [0, 0, 1, 1],
     [1, 1, 1, 1],
 ])
+"""
+pop = np.arange(10000000).reshape((100000, 100))
 
 
 def evl(ind):
@@ -17,11 +20,6 @@ def evl(ind):
 
 
 with Benchmarker(loop) as bench:
-
-    @bench('simple')
-    def default_sort(bm):
-        for i in bm:
-            sel._roulette_simple(pop, 0.3, evl)
 
     @bench('me')
     def insertion(bm):

@@ -16,4 +16,5 @@ def uniform(ind0, ind1):
 if __name__ == "__main__":
     ind0 = np.zeros(30, dtype=int)
     ind1 = np.ones(30, dtype=int)
-    print(uniform(ind0, ind1))
+    pop = np.concatenate((ind0, ind1))
+    print(uniform(pop))
