@@ -1,7 +1,7 @@
 import numpy as np
 
-#from . import util
-import util
+from . import util
+# import util
 
 
 def elite(ftns, num):
@@ -29,7 +29,7 @@ def evl(ind):
 
 if __name__ == "__main__":
     conf = {
-        "func": elite,
+        "func": roulette,
         "num": 3
         # "rate": 0.1
     }

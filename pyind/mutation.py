@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# from . import util
-import util
+from . import util
+# import util
 
 
 def flip_bit(pop, pb):

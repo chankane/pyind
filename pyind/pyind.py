@@ -1,6 +1,9 @@
 import numpy as np
 
 from . import defaults as df
+from .selection import Selection as Sel
+from .crossover import Crossover as Xovr
+from .mutation import Mutation as Mut
 
 
 class Pyind:
@@ -23,25 +26,11 @@ class Pyind:
     def __init__(self, pop, conf):
         #conf = Pyind._add_default(conf)
         self._pop = pop
-        self._sel_rate = conf["sel_rate"]
-        self._xovr_pb = conf["xovr_pb"]
-        self._mut_pb = conf["mut_pb"]
-        self._eval_func = conf["eval_func"]
-        self._sel_func = conf["sel_func"]
-        self._xovr_func = conf["xovr_func"]
-        self._mut_func = conf["mut_func"]
+        self._eval_func = conf["eval"]["func"]
+        self._sel = Sel(pop.shape[0], conf["sel"])
+        self._xovr = Xovr(conf["xovr"])
+        self._mut = Mut(conf["mut"])
         self._goal_ind = conf["goal_ind"]
-
-    def _xovr(self, parents):
-        _len = parents.shape[0]
-        chil = np.array([
-            self._xovr_func(
-                parents[np.random.randint(_len)],
-                parents[np.random.randint(_len)],
-            )
-            for i in range(self._pop.shape[0] - _len)
-        ])
-        self._pop = np.concatenate([parents, chil])
 
     def _contains_goal_ind(self):
         return np.any(np.all(
@@ -55,11 +44,10 @@ class Pyind:
             # print(self._pop)
             if self._contains_goal_ind():
                 break
-            parents = self._sel_func(
-                self._pop, self._sel_rate, self._eval_func
-            )
-            self._xovr(parents)
-            self._pop = self._mut_func(self._pop, self._mut_pb)
-            print()
+            ftns = np.array([self._eval_func(e) for e in self._pop])
+            parents = self._sel.sel(self._pop, ftns)
+            self._pop = self._xovr.xovr(parents, ftns.shape[0])
+            self._pop = self._mut.mut(self._pop)
+            # print()
         print("best ind: ")
-        print(parents[0])
+        print(self._goal_ind)

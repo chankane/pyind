@@ -8,6 +8,7 @@ XOVR_PB = 0.875
 MUT_PB = 0.0075
 
 # func
+# SEL_FUNC = sel.roulette
 SEL_FUNC = sel.elite
 XOVR_FUNC = xovr.p2
 MUT_FUNC = mut.flip_bit
