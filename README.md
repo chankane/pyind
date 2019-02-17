@@ -1,8 +1,19 @@
 # pyind
-An genetic algorithm library
+A genetic algorithm library
 
-# Sample code
-## Onemax problem
+**Only support ndarray (numpy)**
+
+## Installation
+``pip install pyind``
+
+## Future Releases
+1. Add functions of selection, crossover and mutation
+1. Run more faster
+## License
+MIT
+
+## Sample code
+### Onemax problem
 ```python
 # Onemax Problem
 import numpy as np
@@ -32,7 +43,7 @@ if __name__ == "__main__":
     print(best)
 
 ```
-## Traveling salesman problem (TSP)
+### Traveling salesman problem (TSP)
 ```python
 # Traveling salesman problem
 
