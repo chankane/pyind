@@ -16,6 +16,16 @@ def boundary(pop, pb, delta):
     return pop + r * delta * mask
 
 
+def swap_idx(pop, pb):
+    mut_cnt = np.random.binomial(pop.shape[0] * pop.shape[1], pb)
+    y = np.random.randint(pop.shape[0], size=mut_cnt)
+    x1 = np.random.randint(pop.shape[1], size=mut_cnt)
+    x2 = x1 - np.random.randint(1, pop.shape[1], size=mut_cnt)
+    for ey, ex1, ex2 in zip(y, x1, x2):
+        pop[ey, ex1], pop[ey, ex2] = pop[ey, ex2], pop[ey, ex1]
+    return pop
+
+
 def _cre_mask(pop, pb):
     return np.random.ranf(pop.shape) < pb
 

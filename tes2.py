@@ -1,7 +1,12 @@
 from benchmarker import Benchmarker
 import numpy as np
 from pyind import selection as sel
+from deap import tools
 
+
+tools.selAutomaticEpsilonLexicase
+tools.cxOnePoint
+tools.cxBlend
 
 loop = 100
 """

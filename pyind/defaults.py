@@ -3,16 +3,25 @@ from . import mutation as mut
 from . import selection as sel
 
 
-# probability
-XOVR_PB = 0.875
-MUT_PB = 0.0075
+CONF = {
+    "eval": {
+        #"func": None,
+    },
+    "sel": {
+        "func": sel.elite,
+        # "func": sel.roulette
+        "rate": 0.05,
+        "num": 10
+    },
+    "xovr": {
+        "func": xovr.p2,
+        "pb": 0.875
+    },
+    "mut": {
+        "func": mut.flip_bit,
+        "pb": 0.0075
+    },
+    "goal_ind": None
+}
 
-# func
-# SEL_FUNC = sel.roulette
-SEL_FUNC = sel.elite
-XOVR_FUNC = xovr.p2
-MUT_FUNC = mut.flip_bit
-
-# other
-SEL_RATE = 0.01
 END_GEN = 40

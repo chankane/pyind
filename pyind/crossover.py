@@ -2,15 +2,26 @@ import numpy as np
 
 
 def p2(ind0, ind1):
-    _len = ind0.shape[0]
-    end = np.random.randint(_len) + 1
-    start = np.random.randint(end)
-    return np.hstack((ind0[:start], ind1[start:end], ind0[end:]))
+    sta, end = _cre_sta_end(ind0.shape[0])
+    return np.hstack((ind0[:sta], ind1[sta:end], ind0[end:]))
 
 
 def uniform(ind0, ind1):
     mask = np.random.randint(2, size=ind0.shape[0])
     return ind0 * mask + ind1 * np.logical_not(mask)
+
+
+def ox(ind0, ind1):
+    sta, end = _cre_sta_end(ind0.shape[0])
+    keep = ind0[sta:end]
+    other = np.setdiff1d(ind0, keep)
+    return np.concatenate((other[:sta], keep, other[sta:]))
+
+
+def _cre_sta_end(_len):
+    end = np.random.randint(_len) + 1
+    sta = np.random.randint(end)
+    return sta, end
 
 
 class Crossover:
