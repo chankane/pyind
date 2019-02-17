@@ -7,6 +7,7 @@ A genetic algorithm library
 ``pip install pyind``
 
 ## Future Releases
+1. Fix bug
 1. Add functions of selection, crossover and mutation
 1. Run more faster
 ## License
