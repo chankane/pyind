@@ -34,25 +34,25 @@ Selection function
 
 Function \ Parameter (default value) | num (10)
 -- | :--:
-elite | o
-roulette | o
+elite | :heavy_check_mark:
+roulette | :heavy_check_mark:
 
 
 Crossover function
 
 Function \ Parameter (default value) | pb (0.875)
 -- | :--:
-p2 | o
-uniform | o
-ox | o
+p2 | :heavy_check_mark:
+uniform | :heavy_check_mark:
+ox | :heavy_check_mark:
 
 Mutation function
 
 Function \ Parameter (default value) | pb (0.0075)| delta (1)
 -- | :--: | :--:
-flip_bit | o
-boundary | o | o
-swap_idx | o
+flip_bit | :heavy_check_mark:
+boundary | :heavy_check_mark: | :heavy_check_mark:
+swap_idx | :heavy_check_mark:
 
 ## Future Releases
 1. Fix bug
