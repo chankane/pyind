@@ -13,7 +13,7 @@ A genetic algorithm library
 ```python
 conf_format = {
     "eval": {
-        "func": evaluation_function
+        "func": evaluation_function  # Required fields and no default value.
     },
     "sel": {
         "func": selection_function,
@@ -27,7 +27,7 @@ conf_format = {
         "func": mutation_function,
         # Some parameters..
     },
-    "goal_ind": goal_individual
+    "goal_ind": goal_individual  # Default value = None
 }
 ```
 Correspondence between function and parameter is as follows
