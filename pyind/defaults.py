@@ -4,6 +4,7 @@ from . import selection as sel
 
 
 CONF = {
+    "eval": {},
     "sel": {
         "func": sel.elite,
         # "func": sel.roulette

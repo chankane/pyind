@@ -18,17 +18,17 @@ class Pyind:
         self._goal_ind = conf["goal_ind"]
 
     def _contains_goal_ind(self):
-        return np.any(np.all(
-            (self._pop == self._goal_ind).reshape(self._pop.shape[0], -1),
-            axis=1
-        ))
+        return np.any(np.all(self._pop == self._goal_ind, axis=1))
 
     def _get_best(self):
         ftns = np.array([self._eval_func(e) for e in self._pop])
         return self._pop[np.argsort(ftns)[-1]]
 
-    def start(self, end_gen=df.END_GEN):
+    def run(self, end_gen=df.END_GEN):
         print("\rgen: {0:d}".format(0), end="")
+        if self._contains_goal_ind():
+            print("\ngoal")
+            return self._goal_ind
         for i in range(end_gen):
             print("\rgen: {0:d}".format(i + 1), end="")
             if self._contains_goal_ind():

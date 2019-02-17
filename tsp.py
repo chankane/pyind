@@ -29,7 +29,7 @@ def solve(pop):
     conf["xovr"]["func"] = xovr.ox
     conf["mut"]["func"] = mut.swap_idx
     conf["mut"]["pb"] = 0.05
-    return pi.Pyind(pop, conf).start(END_GEN)
+    return pi.Pyind(pop, conf).run(END_GEN)
 
 
 if __name__ == "__main__":
