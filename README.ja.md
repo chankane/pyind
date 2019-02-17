@@ -11,7 +11,7 @@
 ```python
 conf_format = {
     "eval": {
-        "func": 評価関数
+        "func": 評価関数  # 必須項目　既定値なし
     },
     "sel": {
         "func": 選択関数,
@@ -25,7 +25,7 @@ conf_format = {
         "func": 突然変異関数,
         # パラメータが続く..
     },
-    "goal_ind": 目標の個体
+    "goal_ind": 目標の個体  # 既定値 = None
 }
 ```
 関数とパラメータの対応は以下の通りです
