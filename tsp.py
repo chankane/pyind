@@ -9,11 +9,11 @@ from pyind import mutation as mut
 from pyind import defaults as df
 
 
-CITY_CNT = 15
-POP_CNT = 200
+CITIES_LEN = 15
+POP_LEN = 200
 END_GEN = 500
 
-cities = np.random.rand(CITY_CNT * 2).reshape((-1, 2))
+cities = np.random.rand(CITIES_LEN * 2).reshape((-1, 2))
 
 
 def evl(ind):
@@ -29,15 +29,14 @@ def solve(pop):
     conf["xovr"]["func"] = xovr.ox
     conf["mut"]["func"] = mut.swap_idx
     conf["mut"]["pb"] = 0.05
-    best = pi.Pyind(pop, conf).start(END_GEN)
-    return best
+    return pi.Pyind(pop, conf).start(END_GEN)
 
 
 if __name__ == "__main__":
     t = cities.T
 
     # Create pop
-    pop = np.tile(np.arange(CITY_CNT), (POP_CNT, 1))
+    pop = np.tile(np.arange(CITIES_LEN), (POP_LEN, 1))
     for e in pop:
         np.random.shuffle(e)
 
@@ -46,7 +45,8 @@ if __name__ == "__main__":
     plt.plot(t[0, idx], t[1, idx], label="gen 0", marker="o")
 
     best = solve(pop)
-    print("best ind: " + str(best))
+    print("best ind: ")
+    print(best)
 
     # Plot gen END_GEN
     idx = best

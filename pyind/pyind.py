@@ -8,6 +8,8 @@ from .mutation import Mutation as Mut
 
 class Pyind:
     def __init__(self, pop, conf):
+        if type(pop) == list:
+            raise TypeError("pyind only supports ndarray (numpy)")
         self._pop = pop
         self._eval_func = conf["eval"]["func"]
         self._sel = Sel(pop.shape[0], conf["sel"])
@@ -30,7 +32,7 @@ class Pyind:
         for i in range(end_gen):
             print("\rgen: {0:d}".format(i + 1), end="")
             if self._contains_goal_ind():
-                print("goal")
+                print("\ngoal")
                 return self._goal_ind
             ftns = np.array([self._eval_func(e) for e in self._pop])
             parents = self._sel.sel(self._pop, ftns)
