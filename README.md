@@ -88,7 +88,7 @@ if __name__ == "__main__":
     conf["eval"]["func"] = evl
     conf["goal_ind"] = np.ones(IND_LEN)
 
-    best = pi.Pyind(pop, conf).start()
+    best = pi.Pyind(pop, conf).run()
 
     print("best ind: ")
     print(best)
@@ -127,7 +127,7 @@ def solve(pop):
     conf["xovr"]["func"] = xovr.ox
     conf["mut"]["func"] = mut.swap_idx
     conf["mut"]["pb"] = 0.05
-    return pi.Pyind(pop, conf).start(END_GEN)
+    return pi.Pyind(pop, conf).run(END_GEN)
 
 
 if __name__ == "__main__":
