@@ -1,14 +1,13 @@
 # pyind
-A genetic algorithm library
+遺伝的アルゴリズムライブラリ
 
-**pyind ONLY supports ndarray (numpy)**
-[日本語](https://github.com/chankane/pyind/blob/dev/README.ja.md)
+**pyindはndarray (numpy) のみをサポートします**
 
-## Installation
+## インストール
 ``pip install pyind``
 
 ## About `conf`
-`conf` has the following format
+`conf`の形式は以下のとおりです
 ```python
 conf_format = {
     "eval": {
@@ -29,41 +28,41 @@ conf_format = {
     "goal_ind": goal_individual
 }
 ```
-Correspondence between function and parameter is as follows
+関数とパラメータの対応は以下の通りです
 
-Selection function
+選択関数
 
-Function \ Parameter (default value) | num (10)
+関数 \ パラメータ (既定値) | num (10)
 -- | :--:
 elite | :heavy_check_mark:
 roulette | :heavy_check_mark:
 
+交叉関数
 
-Crossover function
-
-Function \ Parameter (default value) | pb (0.875)
+関数 \ パラメータ (既定値) | pb (0.875)
 -- | :--:
 p2 | :heavy_check_mark:
 uniform | :heavy_check_mark:
 ox | :heavy_check_mark:
 
-Mutation function
+突然変異関数
 
-Function \ Parameter (default value) | pb (0.0075)| delta (1)
+関数 \ パラメータ (既定値) | pb (0.0075)| delta (1)
 -- | :--: | :--:
 flip_bit | :heavy_check_mark:
 boundary | :heavy_check_mark: | :heavy_check_mark:
 swap_idx | :heavy_check_mark:
 
-## Future Releases
-1. Fix bug
-1. Add functions of selection, crossover and mutation
-1. Run more faster
-## License
+## 今後の予定
+1. バグを直す
+1. 選択、交差、突然変異の関数を追加する
+1. もっとはやくする
+
+## ライセンス
 MIT
 
-## Sample code
-### Onemax problem
+## サンプルコード
+### Onemax 問題
 ```python
 # Onemax Problem
 import numpy as np
@@ -93,7 +92,7 @@ if __name__ == "__main__":
     print(best)
 
 ```
-### Traveling salesman problem (TSP)
+### 巡回セールスマン問題 (TSP)
 ```python
 # Traveling salesman problem
 
