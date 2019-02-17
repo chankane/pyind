@@ -6,7 +6,7 @@
 ## インストール
 ``pip install pyind``
 
-## About `conf`
+## `conf`について
 `conf`の形式は以下のとおりです
 ```python
 conf_format = {

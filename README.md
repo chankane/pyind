@@ -8,7 +8,7 @@ A genetic algorithm library
 ## Installation
 ``pip install pyind``
 
-## `conf`について
+## About `conf`
 `conf` has the following format
 ```python
 conf_format = {
