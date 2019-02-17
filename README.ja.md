@@ -30,11 +30,11 @@ conf_format = {
 ```
 関数とパラメータの対応は以下の通りです
 
-選択関数 (既定値: elite)
+選択関数 (既定値: elitism)
 
 関数 \ パラメータ (既定値) | num (10)
 -- | :--:
-elite | :heavy_check_mark:
+elitism | :heavy_check_mark:
 roulette | :heavy_check_mark:
 
 交叉関数 (既定値: p2)
