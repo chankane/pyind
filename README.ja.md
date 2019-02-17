@@ -11,21 +11,21 @@
 ```python
 conf_format = {
     "eval": {
-        "func": evaluation_function
+        "func": 評価関数
     },
     "sel": {
-        "func": selection_function,
-        # Some parameters..
+        "func": 選択関数,
+        # パラメータが続く..
     },
     "xovr": {
-        "func": crossover_function,
-        # Some parameters..
+        "func": 交叉関数,
+        # パラメータが続く..
     },
     "mut": {
-        "func": mutation_function,
-        # Some parameters..
+        "func": 突然変異関数,
+        # パラメータが続く..
     },
-    "goal_ind": goal_individual
+    "goal_ind": 目標の個体
 }
 ```
 関数とパラメータの対応は以下の通りです
