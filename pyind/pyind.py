@@ -7,9 +7,15 @@ from .mutation import Mutation as Mut
 
 
 class Pyind:
+    @staticmethod
+    def _chk_err(pop, conf):
+        if type(pop) is not np.ndarray:
+            raise TypeError("Pyind only supports ndarray (numpy)")
+        if pop.shape[0] <= conf['sel']['num']:
+            raise TypeError("Should set poplation size > conf['sel']['num']")
+
     def __init__(self, pop, conf):
-        if type(pop) == list:
-            raise TypeError("pyind only supports ndarray (numpy)")
+        Pyind._chk_err(pop, conf)
         self._pop = pop
         self._eval_func = conf["eval"]["func"]
         self._sel = Sel(pop.shape[0], conf["sel"])

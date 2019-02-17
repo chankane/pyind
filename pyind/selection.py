@@ -4,11 +4,45 @@ from . import util
 # import util
 
 
-def elite(ftns, num):
+def elitism(ftns, num):
+    """
+    Elitism selection
+
+    Select best "num" individuals
+
+    Parameters
+    ----------
+    ftns : ndarray
+        Fitness of individuals
+    num : int
+        Number of the selection
+
+    Returns
+    -------
+    idxs : int
+        Indices of selected individuals
+    """
+
     return np.argsort(ftns)[-num::]
 
 
 def roulette(ftns, num):
+    """
+    Roulette wheel selection (RWS)
+
+    Parameters
+    ----------
+    ftns : ndarray
+        Fitness of individuals
+    num : int
+        Number of the selection
+
+    Returns
+    -------
+    idxs : int
+        Indices of selected individuals
+    """
+
     w = ftns / ftns.sum()
     return np.random.choice(ftns.shape[0], num, p=w)
 

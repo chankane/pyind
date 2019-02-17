@@ -6,11 +6,45 @@ from . import util
 
 
 def flip_bit(pop, pb):
+    """
+    Flip the individual's bits
+
+    Flip bits of randomly selected genes
+
+    Parameters
+    ----------
+    pop : ndarray
+        Population
+    pb : float
+        Probability of mutation
+
+    Returns
+    -------
+    new_pop : ndarray
+        mutated population
+    """
+
     mask = _cre_mask(pop, pb)
     return np.logical_xor(pop, mask)
 
 
 def boundary(pop, pb, delta):
+    """
+    Add random value from -delta to delta to randomly selected genes
+
+    Parameters
+    ----------
+    pop : ndarray
+        Population
+    pb : float
+        Probability of mutation
+
+    Returns
+    -------
+    new_pop : ndarray
+        mutated population
+    """
+
     mask = _cre_mask(pop, pb)
     r = np.random.ranf(pop.shape) * 2 - 1
     return pop + r * delta * mask
