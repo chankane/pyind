@@ -1,7 +1,7 @@
 # pyind
 A genetic algorithm library
 
-**pyind Only supports ndarray (numpy)**
+**pyind ONLY supports ndarray (numpy)**
 
 ## Installation
 ``pip install pyind``
