@@ -6,6 +6,54 @@ A genetic algorithm library
 ## Installation
 ``pip install pyind``
 
+## About `conf`
+`conf` has the following format
+```python
+conf_format = {
+    "eval": {
+        "func": evaluation_function
+    },
+    "sel": {
+        "func": selection_function,
+        # Some parameters..
+    },
+    "xovr": {
+        "func": crossover_function,
+        # Some parameters..
+    },
+    "mut": {
+        "func": mutation_function,
+        # Some parameters..
+    },
+    "goal_ind": goal_individual
+}
+```
+Correspondence between function and parameter is as follows
+
+Selection function
+
+Function \ Parameter (default value) | num (10)
+-- | :--:
+elite | o
+roulette | o
+
+
+Crossover function
+
+Function \ Parameter (default value) | pb (0.875)
+-- | :--:
+p2 | o
+uniform | o
+ox | o
+
+Mutation function
+
+Function \ Parameter (default value) | pb (0.0075)| delta (1)
+-- | :--: | :--:
+flip_bit | o
+boundary | o | o
+swap_idx | o
+
 ## Future Releases
 1. Fix bug
 1. Add functions of selection, crossover and mutation
