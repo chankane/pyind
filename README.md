@@ -2,12 +2,13 @@
 A genetic algorithm library
 
 **pyind ONLY supports ndarray (numpy)**
+
 [日本語](https://github.com/chankane/pyind/blob/dev/README.ja.md)
 
 ## Installation
 ``pip install pyind``
 
-## About `conf`
+## `conf`について
 `conf` has the following format
 ```python
 conf_format = {
