@@ -32,11 +32,11 @@ conf_format = {
 ```
 Correspondence between function and parameter is as follows
 
-Selection function (default: elite)
+Selection function (default: elitism)
 
 Function \ Parameter (default value) | num (10)
 -- | :--:
-elite | :heavy_check_mark:
+elitism | :heavy_check_mark:
 roulette | :heavy_check_mark:
 
 
