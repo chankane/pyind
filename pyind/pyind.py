@@ -18,6 +18,8 @@ class Pyind:
         self._goal_ind = conf["goal_ind"]
 
     def _contains_goal_ind(self):
+        if self._goal_ind is None:
+            return False
         return np.any(np.all(self._pop == self._goal_ind, axis=1))
 
     def _get_best(self):
