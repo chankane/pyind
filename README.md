@@ -32,15 +32,15 @@ conf_format = {
 ```
 Correspondence between function and parameter is as follows
 
-Selection function
+Selection function (default: elitism)
 
 Function \ Parameter (default value) | num (10)
 -- | :--:
-elite | :heavy_check_mark:
+elitism | :heavy_check_mark:
 roulette | :heavy_check_mark:
 
 
-Crossover function
+Crossover function (default: p2)
 
 Function \ Parameter (default value) | pb (0.875)
 -- | :--:
@@ -48,7 +48,7 @@ p2 | :heavy_check_mark:
 uniform | :heavy_check_mark:
 ox | :heavy_check_mark:
 
-Mutation function
+Mutation function (default: flip_bit)
 
 Function \ Parameter (default value) | pb (0.0075)| delta (1)
 -- | :--: | :--:

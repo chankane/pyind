@@ -30,14 +30,14 @@ conf_format = {
 ```
 関数とパラメータの対応は以下の通りです
 
-選択関数
+選択関数 (既定値: elitism)
 
 関数 \ パラメータ (既定値) | num (10)
 -- | :--:
-elite | :heavy_check_mark:
+elitism | :heavy_check_mark:
 roulette | :heavy_check_mark:
 
-交叉関数
+交叉関数 (既定値: p2)
 
 関数 \ パラメータ (既定値) | pb (0.875)
 -- | :--:
@@ -45,7 +45,7 @@ p2 | :heavy_check_mark:
 uniform | :heavy_check_mark:
 ox | :heavy_check_mark:
 
-突然変異関数
+突然変異関数 (既定値: flip_bit)
 
 関数 \ パラメータ (既定値) | pb (0.0075)| delta (1)
 -- | :--: | :--:
