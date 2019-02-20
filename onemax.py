@@ -18,7 +18,6 @@ if __name__ == "__main__":
 
     conf = df.CONF
     conf["eval"]["func"] = evl
-    conf["goal_ind"] = np.ones(IND_LEN)
 
     best = pi.Pyind(pop, conf).run()
 

@@ -44,7 +44,25 @@ def roulette(ftns, num):
     """
 
     w = ftns / ftns.sum()
-    return np.random.choice(ftns.shape[0], num, p=w)
+    return np.random.choice(len(ftns), num, p=w)
+
+
+def random(num):
+    """
+    Random selection
+
+    Parameters
+    ----------
+    num : int
+        Number of the selection
+
+    Returns
+    -------
+    idxs : int
+        Indices of selected individuals
+    """
+
+    return np.random.choice(len(ftns), num)
 
 
 class Selection:
@@ -75,7 +93,7 @@ if __name__ == "__main__":
         [0, 0, 1, 1],
     ])
 
-    s = Selection(pop.shape[0], conf)
+    s = Selection(len(pop), conf)
     t = s.sel(pop, pop.sum(axis=1))
     print(t)
     """

@@ -20,7 +20,6 @@ CONF = {
         "pb": 0.0075,
         "delta": 1,
     },
-    "goal_ind": None,
 }
 
 END_GEN = 40

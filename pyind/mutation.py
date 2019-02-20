@@ -53,7 +53,7 @@ def boundary(pop, pb, delta):
 def swap_idx(pop, pb):
     """
     Swap 2 genes selected randomly and repeat it multiple times
-    
+
     Parameters
     ----------
     pop : ndarray
@@ -67,8 +67,8 @@ def swap_idx(pop, pb):
         mutated population
     """
 
-    mut_cnt = np.random.binomial(pop.shape[0] * pop.shape[1], pb)
-    y = np.random.randint(pop.shape[0], size=mut_cnt)
+    mut_cnt = np.random.binomial(len(pop) * pop.shape[1], pb)
+    y = np.random.randint(len(pop), size=mut_cnt)
     x1 = np.random.randint(pop.shape[1], size=mut_cnt)
     x2 = x1 - np.random.randint(1, pop.shape[1], size=mut_cnt)
     for ey, ex1, ex2 in zip(y, x1, x2):

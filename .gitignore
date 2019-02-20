@@ -2,3 +2,5 @@ build
 dist
 pyind.egg-info
 *test*
+*prof*
+*.png

@@ -198,3 +198,45 @@ bm()
 #    [np.cos(i * rad), np.sin(i * rad)] for i in range(CITY_CNT)
     # [np.cos(i * rad), np.sin(i * rad)] for i in [6, 3, 9, 1, 7, 2, 10, 4, 11, 0, 8, 5]
 #])
+
+    def xovr(self, par, pop_len):
+        chil_len = np.random.binomial(pop_len, self._pb)
+        if chil_len % 2 == 1:
+            chil_len += 2 * np.random.randint(2) - 1
+        chil = self._cre_chil(par, chil_len)
+        cln = par[np.random.choice(len(par), pop_len - chil_len)]
+        if len(chil) == 0:
+            return cln
+        elif len(cln) == 0:
+            return chil
+        return np.concatenate((cln, chil))
+
+    def _cre_chil(self, par, size):
+        par_len = len(par)
+        r = np.random.randint(par_len, size=(size, 2))
+        return np.array([
+            self._func(par[r[i, 0]], par[r[i, 1]])
+            for i in range(size // 2)
+        ]).reshape((-1,) + par.shape[1:])
+
+
+    def run(self, end_gen=df.END_GEN):
+        # ここの表示もちょっとあやしい
+        #print("\rgen: {0:d}".format(0), end="")
+        print("gen: 0")
+        if self._contains_goal_ind():
+            print("\ngoal")
+            return self._goal_ind
+        for i in range(end_gen):
+            #print("\rgen: {0:d}".format(i + 1), end="")
+            print("gen: " + str(i + 1))
+            if self._contains_goal_ind():
+                print("\ngoal")
+                return self._goal_ind
+            print("hi")
+            ftns = np.array([self._eval_func(e) for e in self._pop])
+            parents = self._sel.sel(self._pop, ftns)
+            self._pop = self._xovr.xovr(parents, len(ftns))
+            self._pop = self._mut.mut(self._pop)
+        print()
+        return self._get_best()
