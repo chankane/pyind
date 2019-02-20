@@ -17,10 +17,6 @@ def evaluation_function(individual):  # individual is an array of gene
 
 ```
 
-Parameters | Returns
---|--
-Individual: an array of gene | Fitness of this individual
-
 ## About `conf`
 `conf` has the following format
 ```python
