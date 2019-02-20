@@ -10,7 +10,12 @@ Coming soon...
 ~~``pip install pyind``~~
 
 ## About evaluation function
-An Evaluation function follows the format of the table below
+An evaluation function has the following format
+```python
+def evaluation_function(individual):  # individual is an array of gene
+    return fitness_of_this_individual
+
+```
 
 Parameters | Returns
 --|--

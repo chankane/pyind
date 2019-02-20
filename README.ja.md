@@ -8,11 +8,12 @@ Coming soon...
 ~~``pip install pyind``~~
 
 ## 評価関数について
-評価関数は以下の表の形式に従います
+評価関数の形式は以下のとおりです
+```python
+def evaluation_function(individual):  # individual は遺伝子の配列
+    return fitness_of_this_individual
 
-引数 | 戻り値
---|--
-個体: 遺伝子の配列 | この個体の適応度
+```
 
 ## `conf`について
 `conf`の形式は以下のとおりです
