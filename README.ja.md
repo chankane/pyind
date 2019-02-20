@@ -4,7 +4,8 @@
 **pyindはndarray (numpy) のみをサポートします**
 
 ## インストール
-``pip install pyind``
+Coming soon...
+~~``pip install pyind``~~
 
 ## `conf`について
 `conf`の形式は以下のとおりです
@@ -25,7 +26,6 @@ conf_format = {
         "func": 突然変異関数,
         # パラメータが続く..
     },
-    "goal_ind": 目標の個体  # 既定値 = None
 }
 ```
 関数とパラメータの対応は以下の通りです
@@ -84,7 +84,6 @@ if __name__ == "__main__":
 
     conf = df.CONF
     conf["eval"]["func"] = evl
-    conf["goal_ind"] = np.ones(IND_LEN)
 
     best = pi.Pyind(pop, conf).run()
 
@@ -105,7 +104,7 @@ from pyind import mutation as mut
 from pyind import defaults as df
 
 
-CITIES_LEN = 15
+CITIES_LEN = 20
 POP_LEN = 200
 END_GEN = 500
 
@@ -114,7 +113,7 @@ cities = np.random.rand(CITIES_LEN * 2).reshape((-1, 2))
 
 def evl(ind):
     total = 0
-    for i in range(1, ind.shape[0]):
+    for i in range(1, len(ind)):
         total += np.linalg.norm(cities[ind[i]] - cities[ind[i - 1]])
     return -total
 

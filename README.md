@@ -6,14 +6,15 @@ A genetic algorithm library
 [日本語](https://github.com/chankane/pyind/blob/dev/README.ja.md)
 
 ## Installation
-``pip install pyind``
+Coming soon...
+~~``pip install pyind``~~
 
 ## About `conf`
 `conf` has the following format
 ```python
 conf_format = {
     "eval": {
-        "func": evaluation_function  # Required fields and no default value.
+        "func": evaluation_function  # Required fields and it has not default value.
     },
     "sel": {
         "func": selection_function,
@@ -27,7 +28,6 @@ conf_format = {
         "func": mutation_function,
         # Some parameters..
     },
-    "goal_ind": goal_individual  # Default value = None
 }
 ```
 Correspondence between function and parameter is as follows
@@ -86,7 +86,6 @@ if __name__ == "__main__":
 
     conf = df.CONF
     conf["eval"]["func"] = evl
-    conf["goal_ind"] = np.ones(IND_LEN)
 
     best = pi.Pyind(pop, conf).run()
 
@@ -107,7 +106,7 @@ from pyind import mutation as mut
 from pyind import defaults as df
 
 
-CITIES_LEN = 15
+CITIES_LEN = 20
 POP_LEN = 200
 END_GEN = 500
 
@@ -116,7 +115,7 @@ cities = np.random.rand(CITIES_LEN * 2).reshape((-1, 2))
 
 def evl(ind):
     total = 0
-    for i in range(1, ind.shape[0]):
+    for i in range(1, len(ind)):
         total += np.linalg.norm(cities[ind[i]] - cities[ind[i - 1]])
     return -total
 
