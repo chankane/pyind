@@ -1,5 +1,5 @@
 # pyind
-A genetic algorithm library
+A genetic algorithm library in Python3
 
 **pyind ONLY supports ndarray (numpy)**
 
@@ -8,6 +8,13 @@ A genetic algorithm library
 ## Installation
 Coming soon...
 ~~``pip install pyind``~~
+
+## About evaluation function
+An Evaluation function follows the format of the table below
+
+Parameters | Returns
+--|--
+Individual: an array of gene | Fitness of this individual
 
 ## About `conf`
 `conf` has the following format
@@ -106,8 +113,8 @@ from pyind import mutation as mut
 from pyind import defaults as df
 
 
-CITIES_LEN = 20
-POP_LEN = 200
+CITIES_LEN = 30
+POP_LEN = 300
 END_GEN = 500
 
 cities = np.random.rand(CITIES_LEN * 2).reshape((-1, 2))
@@ -125,7 +132,7 @@ def solve(pop):
     conf["eval"]["func"] = evl
     conf["xovr"]["func"] = xovr.ox
     conf["mut"]["func"] = mut.swap_idx
-    conf["mut"]["pb"] = 0.05
+    conf["mut"]["pb"] = 0.10
     return pi.Pyind(pop, conf).run(END_GEN)
 
 

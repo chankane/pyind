@@ -1,11 +1,18 @@
 # pyind
-遺伝的アルゴリズムライブラリ
+遺伝的アルゴリズムライブラリ (Python3)
 
 **pyindはndarray (numpy) のみをサポートします**
 
 ## インストール
 Coming soon...
 ~~``pip install pyind``~~
+
+## 評価関数について
+評価関数は以下の表の形式に従います
+
+引数 | 戻り値
+--|--
+個体: 遺伝子の配列 | この個体の適応度
 
 ## `conf`について
 `conf`の形式は以下のとおりです
@@ -104,8 +111,8 @@ from pyind import mutation as mut
 from pyind import defaults as df
 
 
-CITIES_LEN = 20
-POP_LEN = 200
+CITIES_LEN = 30
+POP_LEN = 300
 END_GEN = 500
 
 cities = np.random.rand(CITIES_LEN * 2).reshape((-1, 2))
@@ -123,7 +130,7 @@ def solve(pop):
     conf["eval"]["func"] = evl
     conf["xovr"]["func"] = xovr.ox
     conf["mut"]["func"] = mut.swap_idx
-    conf["mut"]["pb"] = 0.05
+    conf["mut"]["pb"] = 0.10
     return pi.Pyind(pop, conf).run(END_GEN)
 
 

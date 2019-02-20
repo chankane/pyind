@@ -9,8 +9,8 @@ from pyind import mutation as mut
 from pyind import defaults as df
 
 
-CITIES_LEN = 20
-POP_LEN = 200
+CITIES_LEN = 30
+POP_LEN = 300
 END_GEN = 500
 
 cities = np.random.rand(CITIES_LEN * 2).reshape((-1, 2))
@@ -28,7 +28,7 @@ def solve(pop):
     conf["eval"]["func"] = evl
     conf["xovr"]["func"] = xovr.ox
     conf["mut"]["func"] = mut.swap_idx
-    conf["mut"]["pb"] = 0.05
+    conf["mut"]["pb"] = 0.10
     return pi.Pyind(pop, conf).run(END_GEN)
 
 
