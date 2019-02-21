@@ -4,8 +4,7 @@
 **pyindはndarray (numpy) のみをサポートします**
 
 ## インストール
-Coming soon...
-~~``pip install pyind``~~
+``pip install pyind``
 
 ## 評価関数について
 評価関数の形式は以下のとおりです

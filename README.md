@@ -6,8 +6,7 @@ A genetic algorithm library in Python3
 [日本語](https://github.com/chankane/pyind/blob/dev/README.ja.md)
 
 ## Installation
-Coming soon...
-~~``pip install pyind``~~
+``pip install pyind``
 
 ## About evaluation function
 An evaluation function has the following format
