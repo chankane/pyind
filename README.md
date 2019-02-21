@@ -36,6 +36,7 @@ conf_format = {
 }
 ```
 Value that can be set to `conf["sel"]` are as shown in the table
+
 In parentheses is default value
 
 Table Sel
@@ -46,6 +47,7 @@ elitism | 0&ndash;size of poplation
 roulette | 0&ndash;size of poplation
 
 Value that can be set to `conf["xovr"]` are as shown in the table
+
 In parentheses is default value
 
 Table Xovr
@@ -57,6 +59,7 @@ uniform | 0&ndash;1
 ox | 0&ndash;1
 
 Value that can be set to `conf["mut"]` are as shown in the table
+
 In parentheses is default value
 
 Table Mut
