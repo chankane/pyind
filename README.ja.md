@@ -35,6 +35,7 @@ conf_format = {
 ```
 
 `conf["sel"]` に設定できる値は表に示すとおりです
+
 カッコの中はデフォルト値
 
 テーブル Sel
@@ -45,6 +46,7 @@ elitism | 0&ndash;size of poplation
 roulette | 0&ndash;size of poplation
 
 `conf["xovr"]` に設定できる値は表に示すとおりです
+
 カッコの中はデフォルト値
 
 テーブル Xovr
@@ -56,6 +58,7 @@ uniform | 0&ndash;1
 ox | 0&ndash;1
 
 `conf["mut"]` に設定できる値は表に示すとおりです
+
 カッコの中はデフォルト値
 
 テーブル Mut
