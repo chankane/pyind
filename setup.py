@@ -3,11 +3,11 @@ import setuptools
 
 setuptools.setup(
     name="pyind",
-    version="1.6",
+    version="1.7",
     author="chankane",
     author_email="brawnychocolate@gmail.com",
-    description="A genetic algorithm library",
-    long_description="# A genetic algorithm library (test)",
+    description="A genetic algorithm library in Python3",
+    long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
     url="https://github.com/chankane/pyind",
     keywords="pyind genetic ga GA",

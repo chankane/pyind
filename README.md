@@ -25,44 +25,47 @@ conf_format = {
         "func": evaluation_function  # Required fields and it has not default value.
     },
     "sel": {
-        "func": selection_function,
-        # Some parameters..
+        # See "Table Sel" below
     },
     "xovr": {
-        "func": crossover_function,
-        # Some parameters..
+        # See "Table Xovr" below
     },
     "mut": {
-        "func": mutation_function,
-        # Some parameters..
+        # See "Table Mut" below
     },
 }
 ```
-Correspondence between function and parameter is as follows
+Value that can be set to `conf["sel"]` are as shown in the table
+In parentheses is default value
 
-Selection function (default: elitism)
+Table Sel
 
-Function \ Parameter (default value) | num (10)
+"sel" (elitism) | "num" (10)
 -- | :--:
-elitism | :heavy_check_mark:
-roulette | :heavy_check_mark:
+elitism | 0&ndash;size of poplation
+roulette | 0&ndash;size of poplation
 
+Value that can be set to `conf["xovr"]` are as shown in the table
+In parentheses is default value
 
-Crossover function (default: p2)
+Table Xovr
 
-Function \ Parameter (default value) | pb (0.875)
+"xovr" (p2) | "pb" (0.875)
 -- | :--:
-p2 | :heavy_check_mark:
-uniform | :heavy_check_mark:
-ox | :heavy_check_mark:
+p2 | 0&ndash;1
+uniform | 0&ndash;1
+ox | 0&ndash;1
 
-Mutation function (default: flip_bit)
+Value that can be set to `conf["mut"]` are as shown in the table
+In parentheses is default value
 
-Function \ Parameter (default value) | pb (0.0075)| delta (1)
+Table Mut
+
+"mut" (flip_bit) | "pb" (0.0075)| "delta" (1)
 -- | :--: | :--:
-flip_bit | :heavy_check_mark:
-boundary | :heavy_check_mark: | :heavy_check_mark:
-swap_idx | :heavy_check_mark:
+flip_bit | 0&ndash;1
+boundary | 0&ndash;1 | 0&ndash;&infin;
+swap_idx | 0&ndash;1
 
 ## Future Releases
 1. Fix bug

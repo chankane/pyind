@@ -10,8 +10,8 @@ Coming soon...
 ## 評価関数について
 評価関数の形式は以下のとおりです
 ```python
-def evaluation_function(individual):  # individual は遺伝子の配列
-    return fitness_of_this_individual
+def 評価関数(個体):  # 個体は遺伝子の配列
+    return この個体の適応度
 
 ```
 
@@ -23,43 +23,48 @@ conf_format = {
         "func": 評価関数  # 必須項目　既定値なし
     },
     "sel": {
-        "func": 選択関数,
-        # パラメータが続く..
+        # 以下の「テーブルSel」を参照ください
     },
     "xovr": {
-        "func": 交叉関数,
-        # パラメータが続く..
+        # 以下の「テーブルXovr」を参照ください
     },
     "mut": {
-        "func": 突然変異関数,
-        # パラメータが続く..
+        # 以下の「テーブルMut」を参照ください
     },
 }
 ```
-関数とパラメータの対応は以下の通りです
 
-選択関数 (既定値: elitism)
+`conf["sel"]` に設定できる値は表に示すとおりです
+カッコの中はデフォルト値
 
-関数 \ パラメータ (既定値) | num (10)
+テーブル Sel
+
+"sel" (elitism) | "num" (10)
 -- | :--:
-elitism | :heavy_check_mark:
-roulette | :heavy_check_mark:
+elitism | 0&ndash;size of poplation
+roulette | 0&ndash;size of poplation
 
-交叉関数 (既定値: p2)
+`conf["xovr"]` に設定できる値は表に示すとおりです
+カッコの中はデフォルト値
 
-関数 \ パラメータ (既定値) | pb (0.875)
+テーブル Xovr
+
+"xovr" (p2) | "pb" (0.875)
 -- | :--:
-p2 | :heavy_check_mark:
-uniform | :heavy_check_mark:
-ox | :heavy_check_mark:
+p2 | 0&ndash;1
+uniform | 0&ndash;1
+ox | 0&ndash;1
 
-突然変異関数 (既定値: flip_bit)
+`conf["mut"]` に設定できる値は表に示すとおりです
+カッコの中はデフォルト値
 
-関数 \ パラメータ (既定値) | pb (0.0075)| delta (1)
+テーブル Mut
+
+"mut" (flip_bit) | "pb" (0.0075)| "delta" (1)
 -- | :--: | :--:
-flip_bit | :heavy_check_mark:
-boundary | :heavy_check_mark: | :heavy_check_mark:
-swap_idx | :heavy_check_mark:
+flip_bit | 0&ndash;1
+boundary | 0&ndash;1 | 0&ndash;&infin;
+swap_idx | 0&ndash;1
 
 ## 今後の予定
 1. バグを直す
