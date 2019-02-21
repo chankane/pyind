@@ -3,7 +3,7 @@ A genetic algorithm library in Python3
 
 **pyind ONLY supports ndarray (numpy)**
 
-[日本語](https://github.com/chankane/pyind/blob/dev/README.ja.md)
+[日本語](https://github.com/chankane/pyind/blob/master/README.ja.md)
 
 ## Installation
 ``pip install pyind``
